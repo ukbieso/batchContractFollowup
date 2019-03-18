@@ -1,0 +1,35 @@
+spring:
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false
+  profiles: default
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    # data base running on AWS and used in test environment
+    #url: jdbc:postgresql://ps-contract.c0riy1xojgsv.eu-west-1.rds.amazonaws.com:5432/ps_kontrakt
+    #username: ps
+    #usernmae: ENC(vAFIafIMNorJGD+wOYicgw==)
+
+    # local database for development environment
+    #url: jdbc:postgresql://localhost:5432/ps
+    url: jdbc:postgresql://localhost:5433/ps
+    username: ENC(T2XXHSmzcPwIfZY+gf826/4BiKYQwoAg)
+    password: ENC(nz0CvmfsSb+xI7jKanfKwT8YgX68TW9u)
+
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+    #generate-ddl: true
+    hibernate:
+      # it will be validate after we come to a conclusion about the data models and add sql schema on the db directory
+      ddl-auto: create
+
+  application:
+    name: batch-contract-followup
